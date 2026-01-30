@@ -6,7 +6,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh 'npm install'
+                sh 'sudo apt install npm'
             }
         }
         stage('DOING_NOTHING_!') { 
