@@ -1,18 +1,21 @@
 pipeline {
-    agent any
-    environment {
-        CI = 'true'
+  agent { label 'agent1' }
+
+  environment {
+    CI = 'true'
+  }
+
+  stages {
+    stage('Build') {
+      steps {
+        sh 'node -v && npm -v'
+        sh 'npm ci'
+      }
     }
-    stages {
-        stage('Build') {
-            steps {
-                sh 'npm install'
-            }
-        }
-        stage('Test') {
-            steps {
-                sh './jenkins/scripts/test.sh'
-            }
-        }
+    stage('Test') {
+      steps {
+        sh './jenkins/scripts/test.sh'
+      }
     }
+  }
 }
