@@ -1,5 +1,10 @@
 pipeline {
-    agent any
+   agent {
+        docker {
+            image 'node:lts-alpine'
+            args '-p 3000:3000 -p 5000:5000'
+        }
+    }
     environment {
         CI = 'true'
     }
@@ -7,6 +12,9 @@ pipeline {
         stage('Build') {
             steps {
                 sh 'npm install'
+                sh 'node -v'
+                sh 'npm -v'
+                sh 'npm ci'
             }
         }
         stage('DOING_NOTHING_!') { 
