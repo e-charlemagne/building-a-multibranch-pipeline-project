@@ -1,5 +1,5 @@
 pipeline {
-    agent { docker { image 'node:24.13.0-alpine3.23' } }
+    agent { label 'agent1'}
     environment {
         CI = 'true'
     }
